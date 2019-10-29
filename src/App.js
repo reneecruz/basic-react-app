@@ -3,19 +3,24 @@ import Tweet from './Tweet'
 
 function App () {
 
-  const [isRed, setRed] = useState(false);
-  const [count, setCount] = useState(0);
+  const [users, setUsers] = useState([
+    { name: "Beyonce", message: "Ladies, get in formation.", likes: "5K" },
+    { name: "Coffee Dad", message: "Coffee so good today.", likes: "5K" },
+    { name: "DHH", message: "Rework.", likes: "5K" },
+    { name: "Mother Theresa", message: "I love you.", likes: "22K" },
+    { name: "Ye", message: "I need this horse.", likes: "12K" },
+    { name: "Tetragrammaton", message: "I love you <3.", likes: "72K" }
+  ])
 
-  const increment = () => {
-    setCount(count + 1)
-    setRed(!isRed);
-  }
 
   return (
     <div className="app">
-      <h1 className={isRed ? "red" : ""}>Change My Color!</h1>
-      <button onClick={increment}>Increment</button>
-      <h1>{count}</h1>
+      {users.map(user => (
+        <Tweet
+          name={user.name} 
+          message={user.message}
+          likes={user.likes}/>
+      ))}
 
     </div>
   );
